@@ -1,0 +1,8 @@
+services:
+  ano2dwc:
+    image: gbifnorway/ano2dwc
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./app:/app
