@@ -14,5 +14,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install Python dependencies
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
+COPY ./app /app
 WORKDIR /app
 CMD [ "tail", "-f", "/dev/null" ]
