@@ -51,8 +51,6 @@ for layer in layers:
     gdb_data[layer] = gpd.read_file(gdb_file, layer=layer)
 
 # %%
-gdb_data
-# %%
 # ['ANO_Problemart',
 #  'ANO_Treslag',
 #  'ANO_SurveyPoint',
@@ -72,6 +70,7 @@ event_flate.columns = map(lambda x: event_flate_mapping[x], list(event_flate.col
 event_flate['locationID'] = event_flate['locationID'].apply(lambda x: f'ssb:{x}')
 #%%
 event_points = gdb_data['ANO_SurveyPoint']
+#%% Survey Points mapping
 event_points_mapping = {'GlobalID': 'eventID',
 'registeringsdato': 'eventDate',
 # 'klokkeslett_start': 'eventTime',
@@ -398,12 +397,6 @@ event_all = pd.concat([event_flate, event_points, event_art, event_fremmed_art, 
 # %%
 occ_all = pd.concat([occ_art, occ_fremmed_art, occ_treslag, occ_problemart])
 # %% Save
-# occ_all.to_csv('/output/occurence.csv', index=False)
-# event_all.to_csv('/output/event.csv', index=False)
-# mofs.to_csv('/output/mof.csv', index=False)
-
-# %%
 occ_all.to_excel('/output/occurence.xlsx', index=False)
 event_all.to_excel('/output/event.xlsx', index=False)
 mofs.to_excel('/output/mof.xlsx', index=False)
-# %%
